@@ -18,7 +18,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
 	{
-		path: '/',
+		path: '/home',          //首页
 		component: Home,
 
 		children: [{
@@ -63,7 +63,7 @@ export default new Router({
 	},
 
 	{
-		path:'/mall/index',  			//商城
+		path:'/mall',  			//商城
 		component: Mall,
 		children: [
 			{	
@@ -80,7 +80,7 @@ export default new Router({
 	},
 
 	{
-		path: '/member/signin',
+		path: '/member',    //登录
 		component: Member
 	}
   ]
