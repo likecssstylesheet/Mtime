@@ -21,16 +21,16 @@ export default new Router({
 		path: '/home',          //首页
 		component: Home,
 
-		children: [{
-			path: 'hot',
-			component: Hot
+		children: [{   
+			path: 'hot',            //正在热播
+			component: Hot    
 		},
 		{
-			path: 'coming',
-			component: Coming
+			path: 'coming',          //即将上映
+			component: Coming       
 		},
 		{
-			path: 'feature',
+			path: 'feature',        //今日热点
 			component: Feature
 		}
 		]
