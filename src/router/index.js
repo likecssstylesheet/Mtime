@@ -82,6 +82,6 @@ export default new Router({
 	{
 		path: '/member',    //登录
 		component: Member
-	}
+	},
   ]
 })
