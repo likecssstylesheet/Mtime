@@ -1,6 +1,9 @@
 <template>
 	<div>
 		<newheader></newheader>
+		<router-view>
+			
+		</router-view>
 	</div>
 </template>
 
