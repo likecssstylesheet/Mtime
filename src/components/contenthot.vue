@@ -7,7 +7,7 @@
 				<p>{{data.t}}</p>
 			</li>
 		</ul>
-		<h2>即将上映({{coming}}部)<span></span></h2>
+		<h2 class="line">即将上映({{coming}}部)<span></span></h2>
 	</div>
 </template>
 
@@ -39,7 +39,6 @@
 		height: 440px;
 		padding: 10px 20px;
 		box-sizing: border-box;
-		border-bottom: 1px solid #ccc;
 		h2{
 			margin-bottom: 10px;
 			span{
@@ -69,5 +68,8 @@
 			}
 		}
 	}
-
+	.line{
+		border-top: 1px solid #ccc;
+		margin-bottom: 0px
+	}
 </style>
