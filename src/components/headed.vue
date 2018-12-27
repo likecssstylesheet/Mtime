@@ -3,8 +3,7 @@
 		<img src="../assets/logo_mtime.png">
 		<ul>
 			<router-link tag="li" to="/home" activeClass="underline"><a href="#">首页</a></router-link>
-
-			<router-link tag="li" activeClass="underline" to="/"><a href="#">购票</a></router-link>
+			<router-link tag="li" activeClass="underline" to="/ticket"><a href="#">购票</a></router-link>
 			<router-link tag="li" to="/mall" activeClass="underline"><a href="#">商城</a></router-link>
 			<router-link tag="li" to="/new" activeClass="underline"><a href="#">发现</a></router-link>
 			<router-link tag="li" to="/member" activeClass="underline"><a href="#"><i class="iconfont">&#xe615;</i></a></router-link>
@@ -32,12 +31,13 @@
 
 		ul{
 			float: right;
+			width: 80%;
 			li{
 				display: inline-block;
 				height: 50px;
 				line-height: 50px;
 				text-align: center;
-				width:55px;
+				width:18%;
 				a{
 					color: #bbb;
 					display: inline-block;
