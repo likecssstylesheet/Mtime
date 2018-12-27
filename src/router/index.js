@@ -13,6 +13,10 @@ import New from '../components/new.vue'
 import Member from '../components/member.vue'
 import Toplist from '../components/toplist.vue'
 import List from '../components/list.vue'
+import NewDetail from  '../components/newdetail.vue'
+import NewReview from '../components/newreview.vue'
+import NewToplist from '../components/newtoplist.vue'
+import NewTrailer from '../components/newtrailer.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -76,7 +80,21 @@ export default new Router({
 
 	{
 		path: '/new',  					//发现
-		component: New
+		component: New,
+		children:[
+		{	path:'detail',
+			component:NewDetail
+		},
+		{	path:'review',
+			component:NewReview
+		},
+		{	path:'toplist',
+			component:NewToplist
+		},
+		{	path:'trailer',
+			component:NewTrailer
+		},
+			]
 	},
 
 	{
