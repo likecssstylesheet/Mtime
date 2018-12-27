@@ -31,12 +31,13 @@
 
 		ul{
 			float: right;
+			width: 80%;
 			li{
 				display: inline-block;
 				height: 50px;
 				line-height: 50px;
 				text-align: center;
-				width:55px;
+				width:18%;
 				a{
 					color: #bbb;
 					display: inline-block;
