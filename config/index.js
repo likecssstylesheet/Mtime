@@ -11,6 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+
         '/Service':{
             target:'http://m.mtime.cn',
             changeOrigin:true
