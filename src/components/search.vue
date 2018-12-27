@@ -26,7 +26,7 @@
 			padding-left:10%;
 			line-height:40px;
 			box-sizing: border-box; 
-			background:url('../assets/fangda.png') 10px 10px no-repeat #fff;
+			background:url('/static/images/fangda.png') 10px 10px no-repeat #fff;
 		}
 		span{
 			display: inline-block;
@@ -38,7 +38,7 @@
 			display: inline-block;
 			width: 3%;
 			height: 20px;
-			background:url('../assets/i_city.png') center no-repeat;
+			background:url('/static/images/i_city.png') center no-repeat;
 		}
 	}
 </style>

@@ -25,8 +25,8 @@ export default new Router({
 		path: '/home',          //首页
 		component: Home,
 
-		children: [{   
-			path: 'hot',            //正在热播
+		children: [{
+			path: 'hot',           //正在热播
 			component: Hot    
 		},
 		{

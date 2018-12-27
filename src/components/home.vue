@@ -1,10 +1,11 @@
 <template>
 	<div>
-		<search></search>
-		<contenthot></contenthot>
-		<isbanner></isbanner>
-		<hotday></hotday>
-		<below></below>
+		<search v-if="$store.state.isShow"></search>
+		<contenthot v-if="$store.state.isShow"></contenthot>
+		<isbanner v-if="$store.state.isShow"></isbanner>
+		<hotday v-if="$store.state.isShow"></hotday>
+		<below v-if="$store.state.isShow"></below>
+   		<router-view v-if="$store.state.isHide"></router-view>
 	</div>
 </template>
 
