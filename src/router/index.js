@@ -94,6 +94,10 @@ export default new Router({
 		{	path:'trailer',
 			component:NewTrailer
 		},
+		{
+      		path: '',
+      		redirect: '/new/detail'
+      	} 
 			]
 	},
 

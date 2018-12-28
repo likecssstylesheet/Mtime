@@ -1,6 +1,7 @@
 <template>
 	<div>
-		home
+		
+		<i class="iconfont icon-ico_my"></i>
 	</div>
 </template>
 

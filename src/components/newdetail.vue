@@ -34,10 +34,16 @@
 			</ul>
 			
 		</div>
+		<div class="button" @click=qingqiu()>
+					查看更多
+		</div>
+		<below></below>
 		
 	</div>
+	
 </template>
 <script>
+	import below from "./below.vue"
 	import axios from 'axios'
 	export default{
 		data(){
@@ -45,10 +51,27 @@
 				shuju:null,
 				bigphoto:null,
 				photos:[],
-				time:0
+				
+				pageCount:0,
+				num:1
 
 			}
 			
+
+		},
+		methods:{
+
+			qingqiu(){
+				if(this.num<this.pageCount){
+						axios.get(`/Service/callback.mi/News/NewsList.api?t=2018122717125723493&pageIndex=${++this.num}`).then(res=>{
+							console.log(res.data.newsList)
+							this.bigphoto=[...this.bigphoto,...res.data.newsList]
+						}).catch(error=>{console.log(error)})
+					
+
+				}
+				
+			}
 
 		},
 		computed:{
@@ -70,13 +93,17 @@
 				this.bigphoto=res.data.newsList;
 				this.time=res.data.newsList.publishTime
 				console.log(this.time,this.bigphoto)
-				
+				this.pageCount=res.data.pageCount
 
 			}).catch(error=>{
 				console.log(error)
 			})
 
 
+
+		},
+		components:{
+			below
 
 		}
 	}
@@ -126,11 +153,11 @@
 					border-bottom: 1px solid black;
 					overflow: hidden;
 					h3{
-						height:30px;
-						line-height:30px;
+						height:40px;
+						line-height:40px;
 					}
 
-					height:150px;
+					height:170px;
 				div{
 					float:left;
 					
@@ -168,11 +195,19 @@
 					float:left;
 					p{
 						margin-top:20px;
+						color:gray;
 
 					}
 				}
 			}
 		}
+	}
+	.button{
+		height:40px;
+		line-height:40px;
+		text-align:center;
+		color:#0074c5;
+		font-size:18px;
 	}
 
 </style>
