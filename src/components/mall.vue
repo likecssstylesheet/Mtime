@@ -1,5 +1,9 @@
 <template>
 	<div class="all">
+		<div v-if="!dataIsReturn" class="loading">
+			<img src="../../static/images/loading.gif" alt="">
+		</div>
+		<div v-if="dataIsReturn">
 		<header>
 			<a href="#/mall/search/" title="">
 				<i class="iconfont icon-sousuo"></i>
@@ -9,7 +13,7 @@
 				<a href="#" title=""><i class="iconfont icon-gouwuche"></i></a>
 			</div>
 		</header>
-		<div id="banner">
+		<div id="banner" v-if="dataIsReturn">
 			<swipe class="my-swipe">
     			<swipe-item class="slide1" v-for="data in bannerImg" :key="data.url"><a href="data.url" title=""><img :src="data.image" alt=""/></a></swipe-item>
     			<!-- <swipe-item class="slide2">2</swipe-item>
@@ -38,7 +42,7 @@
 				<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2018%2F11%2F26%2F135334.21724840.jpg&width=750&height=223&clipType=4" alt="">
 			</a>
 		</article>
-		<div id="mall_list">
+		<div id="mall_list" v-if="dataIsReturn">
 			  <img :src="whichfilm.backgroupImage" alt="">
 			  <h4>{{whichfilm.titleEn}}</h4>
 			  <h3>{{whichfilm.titleCn}}</h3>
@@ -55,6 +59,25 @@
 			  </ul>
 			  <a href="https://mall-wv.mtime.cn/#!/commerce/list/?q=%E9%AD%94%E5%85%BD" title="">更多商品</a>
 		</div>
+		<article v-for="data in mall_types" v-if="dataIsReturn" class="mall_type">
+			<div class="type">
+				<h2>{{data.name}}</h2>
+				<span><a :href="data.moreUrl">更多</a></span>
+			</div>
+			<dl>
+				<dt><a :href="data.imgUrl"><img :src="data.image" alt=""></a></dt>
+					<dd>
+						<ul>
+							<li v-for="data in data.subList">
+								<img :src="data.image" alt="">
+								<h3>{{data.title}}</h3>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+		</article>
+		<below></below>
+		</div>
 	</div>
 </template>
 
@@ -62,6 +85,7 @@
 	import axios from "axios";
 	import 'vue-swipe/dist/vue-swipe.css'
 	import { Swipe, SwipeItem } from 'vue-swipe'
+	import below from "./below"
 	export default {
 		data(){
 			return {
@@ -69,21 +93,30 @@
 				mynav:[],
 				whichfilm:null,
 				checkfilm:[],
-				checkedClass:''
+				checkedClass:'',
+				dataIsReturn:false,
+				mall_types:[],
+				goodeList:[]
 			}
 		},
 		beforeMount(){
 			axios.get("/Service/callback.mi/PageSubArea/MarketFirstPageNew.api?t=201812271485473502").then(res=>{
 				// console.log(res.data.scrollImg)
+				this.dataIsReturn = true;
 				this.bannerImg = res.data.scrollImg
 				this.mynav = res.data.navigatorIcon
 				this.checkfilm = res.data.topic
 				this.whichfilm = res.data.topic[0]
+				this.mall_types = res.data.category
 
 			}).catch(erro=>{
 				console.log(erro)
 			})
-		},
+
+			axios.get("/Service/callback.mi/ECommerce/RecommendProducts.api?t=201812281044887501&goodsIds=107091%2C102841%2C105853&pageIndex=1").then(res=>{
+				this.goodList = res.data.goodsList;
+			})
+		},	
 		methods:{
 			changeFilm(data,index){
 				this.whichfilm = data;
@@ -98,12 +131,23 @@
 		},
 		components:{
 			"swipe":Swipe,
-			"swipe-item":SwipeItem 
+			"swipe-item":SwipeItem,
+			below
 		}
 	}
 </script>
 
 <style scoped lang="scss">
+.loading{
+	width:100%;
+	height:100%;
+	background:#fff;
+	img{
+		margin:auto;
+		width:100%;
+	}
+}
+
 .my-swipe {
   height: 200px;
   color: #fff;
@@ -200,6 +244,7 @@
 		position:relative;
 		background:#fff;
 		overflow:hidden;
+		margin-bottom:10px;
 		img{
 			width:100%;
 		}
@@ -267,6 +312,64 @@
 		    line-height:30px;
 		    color:#fff;font-size:16px;
 		    border-radius:20px;
+		}
+	}
+	article.mall_type{
+		margin-bottom:10px;
+		background:#fff;
+		padding-top:10px;
+		div.type{
+			border-left:5px solid #e16364;
+			overflow:hidden;
+			h2{
+				font-size:18px;
+				line-height:30px;
+				float:left;
+				color:#e16364;
+				text-indent: 10px;
+			}
+			span{
+				float:right;
+				color:#333;
+				font-size:15px;
+				line-height:30px;
+				margin-right:30px;
+			}
+		}
+		dl{
+			padding-bottom:20px;
+		}
+		dt{
+			img{
+				width:100%;
+			}
+		}
+		dd{
+			width:90%;
+			margin-left:5%;
+			border-top:solid #ccc 1px;
+			padding-top:10px;
+			ul{
+					overflow:hidden;
+				}
+			li{
+				width:33.3%;
+				float:left;
+				box-sizing: border-box;
+				padding:0 5px;
+				img{
+					width:100%;
+				}
+				h3{
+					padding:0 5px;
+					font-size:13px;
+					white-space: nowrap;
+    				text-overflow: ellipsis;
+    				overflow: hidden;
+    				color:#333;
+    				font-weight:400;
+				}
+			}
 		}
 	}
 </style>

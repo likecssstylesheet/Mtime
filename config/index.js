@@ -15,9 +15,13 @@ module.exports = {
         '/Service':{
             target:'http://m.mtime.cn',
             changeOrigin:true
+        },
+        '/api':{
+            target:'http://ticket-m.mtime.cn',
+            changeOrigin:true
         }
     },
-
+    
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
