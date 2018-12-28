@@ -38,6 +38,7 @@
 	
 </template>
 <script>
+	import { Indicator } from 'mint-ui';
 	import below from "./below.vue"
 	import axios from 'axios'
 	export default{
@@ -61,7 +62,12 @@
 		},
 
 		mounted(){
+			Indicator.open({
+			  text: '加载中...',
+			  spinnerType: 'snake'
+			});
 			axios.get("/Service/callback.mi/PageSubArea/GetRecommendationIndexInfo.api?t=2018122716255050481").then(res=>{
+				Indicator.close()
 				console.log(this.shuju=res.data.trailer);
 			}).catch(error=>{
 				console.log(error)
@@ -70,6 +76,7 @@
 			axios.get("/Service/callback.mi/PageSubArea/TrailerList.api?t=201812289553233806").then(res=>{
 				this.bigphoto=res.data.trailers;
 				this.time=res.data.trailer.publishTime
+
 				
 			
 

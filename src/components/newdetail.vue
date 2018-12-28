@@ -45,6 +45,7 @@
 <script>
 	import below from "./below.vue"
 	import axios from 'axios'
+	import { Indicator } from 'mint-ui';
 	export default{
 		data(){
 			return{
@@ -83,6 +84,10 @@
 		},
 
 		mounted(){
+			Indicator.open({
+			  text: '加载中...',
+			  spinnerType: 'snake'
+			});
 			axios.get("/Service/callback.mi/PageSubArea/GetRecommendationIndexInfo.api?t=2018122716255050481").then(res=>{
 				console.log(this.shuju=res.data.news);
 			}).catch(error=>{
@@ -94,6 +99,7 @@
 				this.time=res.data.newsList.publishTime
 				console.log(this.time,this.bigphoto)
 				this.pageCount=res.data.pageCount
+				Indicator.close()
 
 			}).catch(error=>{
 				console.log(error)
