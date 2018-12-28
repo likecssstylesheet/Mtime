@@ -17,6 +17,7 @@ import NewDetail from  '../components/newdetail.vue'
 import NewReview from '../components/newreview.vue'
 import NewToplist from '../components/newtoplist.vue'
 import NewTrailer from '../components/newtrailer.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -97,7 +98,9 @@ export default new Router({
 		{
       		path: '',
       		redirect: '/new/detail'
-      	} 
+      	}
+			
+
 			]
 	},
 

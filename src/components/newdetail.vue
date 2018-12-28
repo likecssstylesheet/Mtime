@@ -9,7 +9,7 @@
 		<div class="news" v-if="bigphoto">
 			
 			<ul >
-				<li v-for="data in bigphoto">
+				<li v-for="data in bigphoto" @click=handle(data.id) :key="data.id">
 					<div v-if="data.type==1" class="type1">		
 						<h3>{{data.title}}</h3>
 						<div v-for="smalldata in data.images" >
@@ -77,6 +77,12 @@
 
 				}
 				
+			}//请求图片
+			,
+
+			handle(id){
+				this.$router.push(`/movie/${id}`)
+
 			}
 
 		},
