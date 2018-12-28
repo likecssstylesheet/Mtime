@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-	<div>
-		111
-=======
 	<div class="all">
 		<div v-if="!dataIsReturn" class="loading">
 			<img src="../../static/images/loading.gif" alt="">
@@ -82,7 +78,6 @@
 		</article>
 		<below></below>
 		</div>
->>>>>>> fa2a90f490ff104fc4e474d4e5be4db936dd20d7
 	</div>
 </template>
 
