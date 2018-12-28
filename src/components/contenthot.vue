@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>正在热映({{datalist.length}}部)<span></span></h2>
+		<h2 @click="handleToHot()">正在热映({{datalist.length}}部)<span></span></h2>
 		<ul>
 			<li v-for="data in eight" :key="data.id">
 				<img :src="data.img">
@@ -29,6 +29,12 @@
 					this.eight = res.data.ms.slice(0,8)
 					this.coming = res.data.totalComingMovie
 				})
+			},
+			methods:{
+				handleToHot(){
+					this.$router.push(`/home/hot`);
+					this.$store.commit('tabberShow')
+				}
 			}
 		}
 </script>
@@ -45,7 +51,7 @@
 				display: inline-block;
 				width: 7%;
 				height: 10px;
-				background:url('../assets/i_city.png') center no-repeat;
+				background:url('/static/images/i_city.png') center no-repeat;
 				float: right;
 				transform:rotateZ(-90deg);
 				margin-top:10px;

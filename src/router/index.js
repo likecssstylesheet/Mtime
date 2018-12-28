@@ -25,8 +25,8 @@ export default new Router({
 		path: '/home',          //首页
 		component: Home,
 
-		children: [{   
-			path: 'hot',            //正在热播
+		children: [{
+			path: 'hot',           //正在热播
 			component: Hot    
 		},
 		{
@@ -80,7 +80,7 @@ export default new Router({
 
 	{
 		path: '/new',  					//发现
-		component: New,
+		component:New,
 		children:[
 		{	path:'detail',
 			component:NewDetail
@@ -94,6 +94,10 @@ export default new Router({
 		{	path:'trailer',
 			component:NewTrailer
 		},
+		{
+      		path: '',
+      		redirect: '/new/detail'
+      	} 
 			]
 	},
 

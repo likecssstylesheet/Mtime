@@ -63,11 +63,11 @@
 				display: inline-block;
 			}
 			.logo{
-				background:url('../assets/logo_mtime.png') center no-repeat;
+				background:url('/static/images/logo_mtime.png') center no-repeat;
 				background-size:contain
 			}
 			.yingye{
-				background:url('../assets/mark.jpg') center no-repeat;
+				background:url('/static/images/mark.jpg') center no-repeat;
 				background-size:contain
 			}
 		}

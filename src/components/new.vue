@@ -9,9 +9,13 @@
 
 <script >
 	import newheader from './newheader'
+	
 	export default {
 		components:{
 			newheader
+		},
+		mounted(){
+			
 		}
 	}
 </script>

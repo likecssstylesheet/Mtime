@@ -1,6 +1,6 @@
 <template>
 	<div>
-		333333
+		<i class="iconfont icon-bofang"></i>
 	</div>
 </template>
 <script >
