@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<img src="../assets/logo_mtime.png">
+		<img src="/static/images/logo_mtime.png">
 		<ul>
 			<router-link tag="li" to="/home" activeClass="underline"><a href="#">首页</a></router-link>
 			<router-link tag="li" activeClass="underline" to="/ticket"><a href="#">购票</a></router-link>

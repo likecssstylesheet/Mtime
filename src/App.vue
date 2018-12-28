@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-	<headed></headed>
+	<headed v-if="$store.state.isShow"></headed>
     <router-view></router-view>
   </div>
 </template>
