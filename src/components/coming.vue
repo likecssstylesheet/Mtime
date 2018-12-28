@@ -25,8 +25,27 @@
 		    </div>
 	 		</div>
 		</div>
-		<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"  width="100%" height="87.5" src="https://static4da.mtime.cn/feature/mobile/banner/2018/1224/wydhf750210.html""></iframe>
+		<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"  width="100%" height="87.5" src="https://static4da.mtime.cn/feature/mobile/banner/2018/1224/wydhf750175.html"></iframe>
+	<article>
+		<h2>即将上映 <span>({{list.length}}部)</span></h2>
+		<span class="month">1月</span>
+		<ul>
+			<li v-for="data in list">
+				<span class="day">{{data.rDay}}日</span>
+				<img :src="data.image">
+				<h4>{{data.title}}</h4>
+				<p class="one"><i>{{data.wantedCount}}</i>人想看-{{data.type}}</p>
+				<p class="two" v-if="data.director">导演：{{data.director}}</p>
+				<a href="#" v-if="data.isTicket" class="chao">超前预售</a>
+				<a href="#" v-if="data.isVideo" class="foreshow">预告片</a>
+
+			</li>
+		</ul>
+	</article>
+	<below></below>
+	<overhead></overhead>
 	</div>
+
 </template>
 
 <script >
@@ -34,6 +53,9 @@
 	import Swiper from "swiper"
 	import "swiper/dist/css/swiper.css"
 	import axios from 'axios'
+	import below from './below'
+	import overhead from './overhead'
+	import { Indicator } from 'mint-ui'
 		export default {
 			data(){
 				return {
@@ -42,7 +64,15 @@
 				}
 			},
 		components:{
-			search
+			search,
+			below,
+			overhead
+		},
+		beforeMount(){
+			Indicator.open({
+			  text: '加载中...',
+			  spinnerType: 'snake'
+			});
 		},
 		methods:{
 			handleBack(){
@@ -58,6 +88,7 @@
 				console.log(res)
 				this.datalist = res.data.attention
 				this.list = res.data.moviecomings
+				Indicator.close()				
 				this.$nextTick(()=>{
 					var swiper = new Swiper('.swiper-container', {
 						slidesPerView:1,
@@ -178,6 +209,75 @@
 					background:#fff;
 					color: #659c0d;
 					border:1px solid #659c0d;
+				}
+			}
+		}
+		article{
+			padding: 10px 10px 0px 10px;
+			h2{
+				height: 30px;
+				line-height: 30px;
+				font-size: 22px;
+				font-weight: 100;
+				span{
+					color: #909090;
+				}
+			}
+			.month{
+				color: #ccc;
+			}
+			ul{
+				li{
+					height: 170px;
+					border-top:1px solid #ccc;
+					padding: 10px 0 10px 10px;
+					img{
+						width: 30%;
+						float: left;
+						margin-right:10px;
+						height: 145px;
+					}
+					.day{
+						float: left;
+						color: #ccc;
+						margin-right: 10px
+					}
+					h4{
+					display: inline-block;
+					font-size: 18px;
+					color: #000;
+					font-weight: 100;
+					width: 40%;
+					}
+					p{
+						height: 30px;
+						line-height: 30px;
+						font-weight: 100;
+						color: #000;
+						i{
+							font-style: normal;
+							color: #f60;
+						}
+					}
+					.one{
+						font-size: 14px
+					}
+					a{
+						width: 25%;
+						height: 35px;
+						display: inline-block;
+						background:#f60;
+						color: #fff;
+						line-height: 35px;
+						border-radius: 20px;
+						text-align: center;
+						margin-top:10px 
+					}
+					.foreshow{
+						background:#fff;
+						color: #659c0d;
+						border:1px solid #659c0d;
+					}
 				}
 			}
 		}

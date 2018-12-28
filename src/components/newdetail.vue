@@ -93,7 +93,6 @@
 				}
 
 		},
-
 		mounted(){
 			Indicator.open({
 			  text: '加载中...',

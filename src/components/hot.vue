@@ -23,6 +23,7 @@
 				</li>
 			</ul>
 		</article>
+		<overhead></overhead>
 		<below></below>
 	</div>
 </template>
@@ -31,6 +32,8 @@
 	import search from './search'
 	import below from './below'
 	import axios from 'axios'
+	import { Indicator } from 'mint-ui'
+	import overhead from './overhead'
 	export default {
 		data(){
 			return {
@@ -38,10 +41,17 @@
 				integer:''
 			}
 		},
+		beforeMount(){
+			Indicator.open({
+			  text: '加载中...',
+			  spinnerType: 'snake'
+			});
+		},
 		mounted(){
 			axios.get('/Service/callback.mi/Showtime/LocationMovies.api?locationId=290&t=201812271128272188').then(res=>{
 				console.log(res.data)
 				this.datalist = res.data.ms
+				Indicator.close()
 			})
 		},
         methods:{
@@ -66,10 +76,8 @@
 		},
 		components:{
 			search,
-			below
-		},
-		computed:{
-			
+			below,
+			overhead
 		}
 	}
 </script>
