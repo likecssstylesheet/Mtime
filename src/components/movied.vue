@@ -1,4 +1,6 @@
 <template>
+	<div>
+		hahaha
 	<div class="box">
 		<div class="daohang">
 			<i class="iconfont icon-fanhui left" @click="handle()"></i>
@@ -16,6 +18,7 @@
 		<below/>
 
 	</div>
+</div>
 </template>
 
 <script >
