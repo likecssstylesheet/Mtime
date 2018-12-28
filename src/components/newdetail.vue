@@ -63,10 +63,15 @@
 		methods:{
 
 			qingqiu(){
+				Indicator.open({
+				  text: '加载中...',
+				  spinnerType: 'snake'
+				});
 				if(this.num<this.pageCount){
 						axios.get(`/Service/callback.mi/News/NewsList.api?t=2018122717125723493&pageIndex=${++this.num}`).then(res=>{
 							console.log(res.data.newsList)
 							this.bigphoto=[...this.bigphoto,...res.data.newsList]
+							Indicator.close()
 						}).catch(error=>{console.log(error)})
 					
 
