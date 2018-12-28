@@ -23,7 +23,7 @@
 				</ul>
 			</div>
 
-			<!-- <iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"  width="100%" height="87.5" src="https://static4da.mtime.cn/feature/mobile/banner/2018/1224/wydhf750210.html""></iframe> -->
+			<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"  width="100%" height="87.5" src="https://static4da.mtime.cn/feature/mobile/banner/2018/1224/wydhf750210.html""></iframe>
 			<div class="in">{{noticeNotOwn}}</div>
 
 			<ul class="info">
@@ -108,6 +108,7 @@
 		width: 100%;
 		display: flex;
 		border-bottom: 1px solid #ccc;
+		box-sizing: border-box;
 		li {
 			height: 60px;
 			line-height: 60px;
@@ -138,8 +139,9 @@
 	ul.locat {
 		position: relative;
 		display: flex;
-		height: 100%;
 		border-bottom: 1px solid #ccc;
+		box-sizing: border-box;
+		width: 100%;
 		li {
 			flex: 1;
 			height: 40px;
