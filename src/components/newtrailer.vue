@@ -1,8 +1,7 @@
 <template>
 	<div v-if="shuju">
 
-		<div class="bigposition">
-			
+		<div class="bigposition bofang">
 			<img :src="shuju.imageUrl" class="box" :alt="shuju.title">
 			<p class="zhezhao"></p>
 			<p >{{shuju.title}}</p>
@@ -12,9 +11,9 @@
 		<div class="news" v-if="bigphoto">
 			
 			<ul >
-				<li v-for="data in bigphoto" class="type2">
+				<li v-for="data in bigphoto" class="type2" @click=handleself(data) :key="data.id">
 						<div class="left">
-							<i class="iconfont">&#xe662;</i>
+							<i class="iconfont bofang "></i>
 							<img :src="data.coverImg" /> 
 						</div>
 						
@@ -24,15 +23,23 @@
 									{{data.summary}}
 								</p>
 						</div>
-						
-					
-
 				</li>
 			</ul>
 			
 		</div>
 		
 		<below></below>
+		<div class="zhezhao2" v-if="URL">
+			
+			<div class="video" >
+				<div>
+					<span @click=handlecome()>X</span><span>{{URL.videoTitle}}</span>
+				</div>
+				
+				<video :src="URL.url" controls poster="/images/video.png" width="100%"
+			height="100%" autoplay></video>
+			</div>
+		</div>
 		
 	</div>
 	
@@ -47,15 +54,27 @@
 				shuju:null,
 				bigphoto:null,
 				photos:[],
+				URL:null,
+				content:''
 
 			}
 			
 
 		},
+		methods:{
+			handleself(url){
+
+					this.URL=url;
+					
+			},
+			handlecome(){
+				this.URL=null;
+			}
+
+		},
 		
 		computed:{
 				publishTime(){
-						
 					return  this.time
 				}
 
@@ -76,10 +95,6 @@
 			axios.get("/Service/callback.mi/PageSubArea/TrailerList.api?t=201812289553233806").then(res=>{
 				this.bigphoto=res.data.trailers;
 				this.time=res.data.trailer.publishTime
-
-				
-			
-
 			}).catch(error=>{
 				console.log(error)
 			})
@@ -98,7 +113,7 @@
 		position:relative;
 		width:100%;
 		height:260px;
-		i{
+		i.bofang{
 			position: absolute;
 			bottom:10px;
 			right:10px;
@@ -186,6 +201,39 @@
 			}
 		}
 	}
+	.zhezhao2{
+		position: fixed;
+		width: 100%;
+		height:100%;
+		background-color:black;
+		opacity:0.9;
+		top:0;
+		left:0;
+		
+		div.video{
+			background-color:black;
+			position: fixed;
+			top:50%;
+			left:0;
+			width:375px;
+			height:250px;
+			transform:translateY(-50%);
+		div{
+			height:40px;
+			background-color:gray;
+			span
+			{
+			display: inline-block;
+			margin-left: 40px;
+			font-size:18px;
+			text-align:center;
+			color:white;
+			line-height:40px;
+			}
+		}
+
+	}
+}
 	
 
 </style>
