@@ -23,6 +23,7 @@
 				</li>
 			</ul>
 		</article>
+		<overhead></overhead>
 		<below></below>
 	</div>
 </template>
@@ -32,6 +33,7 @@
 	import below from './below'
 	import axios from 'axios'
 	import { Indicator } from 'mint-ui'
+	import overhead from './overhead'
 	export default {
 		data(){
 			return {
@@ -74,10 +76,8 @@
 		},
 		components:{
 			search,
-			below
-		},
-		computed:{
-			
+			below,
+			overhead
 		}
 	}
 </script>

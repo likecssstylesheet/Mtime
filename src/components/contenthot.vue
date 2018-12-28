@@ -7,7 +7,7 @@
 				<p>{{data.t}}</p>
 			</li>
 		</ul>
-		<h2 class="line">即将上映({{coming}}部)<span></span></h2>
+		<h2 class="line" @click="handleToComing()">即将上映({{coming}}部)<span></span></h2>
 	</div>
 </template>
 
@@ -38,7 +38,7 @@
 					Indicator.close()
 				})
 			},
-			methods:{
+		methods:{
 				handleToHot(){
 					this.$router.push(`/home/hot`);
 					this.$store.commit('tabberShow')

@@ -42,6 +42,8 @@
 			</li>
 		</ul>
 	</article>
+	<below></below>
+	<overhead></overhead>
 	</div>
 
 </template>
@@ -51,6 +53,8 @@
 	import Swiper from "swiper"
 	import "swiper/dist/css/swiper.css"
 	import axios from 'axios'
+	import below from './below'
+	import overhead from './overhead'
 	import { Indicator } from 'mint-ui'
 		export default {
 			data(){
@@ -60,7 +64,9 @@
 				}
 			},
 		components:{
-			search
+			search,
+			below,
+			overhead
 		},
 		beforeMount(){
 			Indicator.open({
