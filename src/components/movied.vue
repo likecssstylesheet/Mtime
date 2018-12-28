@@ -1,6 +1,4 @@
-<template>
-	<div>
-		hahaha
+<template>	
 	<div class="box">
 		<div class="daohang">
 			<i class="iconfont icon-fanhui left" @click="handle()"></i>
@@ -8,15 +6,9 @@
 		<div v-if="mynews" class="newsbox">
 			<p class="title">{{mynews.title}}</p>
 			<span>{{mynews.time}}</span> <span class="a">评论{{mynews.commentCount}}</span>
-			<div v-html="mynews.content" class="content">
-				
-			</div>
-			
-			
-
+			<div v-html="mynews.content" class="content"></div>
 		</div>
 		<below/>
-
 	</div>
 </div>
 </template>
@@ -58,6 +50,7 @@
 
 <style scoped lang="scss">
 	.box{
+		
 
 		width:100%;
 		.daohang{

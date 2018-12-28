@@ -181,8 +181,8 @@
 					img{
 						
 						margin-left:1px;
-						width:110px;
-						height:80px;
+						width:114px;
+						height:79px;
 					}
 
 				}
@@ -200,8 +200,8 @@
 				overflow: hidden;
 				height:150px;
 				img{
-					width:80px;
-					height:80px;
+					width:90px;
+					height:90px;
 					float:left;
 					margin:30px 20px 0px 0px;
 

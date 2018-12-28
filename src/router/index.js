@@ -108,5 +108,13 @@ export default new Router({
 		path: '/member',    //登录
 		component: Member
 	},
+	{
+		path:'/',
+		redirect:'/home'
+	},
+	{
+		path:'*',
+		redirect:'/home'
+	}
   ]
 })
