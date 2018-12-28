@@ -80,7 +80,7 @@ export default new Router({
 
 	{
 		path: '/new',  					//发现
-		component: New,
+		component:New,
 		children:[
 		{	path:'detail',
 			component:NewDetail
