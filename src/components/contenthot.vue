@@ -34,6 +34,10 @@
 				handleToHot(){
 					this.$router.push(`/home/hot`);
 					this.$store.commit('tabberShow')
+				},
+				handleToComing(){
+					this.$router.push(`/home/coming`);
+					this.$store.commit('tabberShow')
 				}
 			}
 		}

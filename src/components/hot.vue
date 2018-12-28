@@ -4,7 +4,7 @@
 			<a href="#" class="back" @click="handleBack()"></a>
 			<div>
 				<span class="hot">正在热映</span>
-				<span>即将上映</span>
+				<span @click="handleComing()">即将上映</span>
 			</div>
 		</header>
 		<search></search>
@@ -14,7 +14,7 @@
 					<img :src="data.img">
 					<div>
 					<h3>{{data.t}}</h3>
-					<span v-if="data.r>0">{{data.r}}</span>
+					<span v-if="data.r>0">{{handleComput(data.r)}}</span>
 					<p v-if="data.commonSpecial"><i></i>{{data.commonSpecial}}</p>
 					<i v-if="data.is3D"></i>
 					<b>{{data.NearestCinemaCount}}家影院上映{{data.NearestShowtimeCount}}</b>
@@ -34,7 +34,8 @@
 	export default {
 		data(){
 			return {
-				datalist:[]
+				datalist:[],
+				integer:''
 			}
 		},
 		mounted(){
@@ -43,21 +44,32 @@
 				this.datalist = res.data.ms
 			})
 		},
-		methods:{
+        methods:{
 			handleBack(){
 				this.$router.push(`/home`)
+				this.$store.commit('tabberHide')
 			},
 			handlebuy(){
 				this.$router.push(`/ticket`)
+			},
+			handleComing(){
+				this.$router.push('/home/coming')
+			},
+			handleComput(num){
+				if (num%1 === 0){
+					this.integer=num+'.0'
+				}else{
+					this.integer = num
+				}
+				return this.integer
 			}
-
-		},
-		beforeDestroy(){
-			this.$store.commit('tabberHide')
 		},
 		components:{
 			search,
 			below
+		},
+		computed:{
+			
 		}
 	}
 </script>
