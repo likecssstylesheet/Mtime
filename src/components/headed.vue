@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-show="this.$store.state.isShow">
 		<img src="/static/images/logo_mtime.png">
 		<ul>
 			<router-link tag="li" to="/home" activeClass="underline"><a href="#">首页</a></router-link>

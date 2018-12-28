@@ -11,7 +11,9 @@ const store = new Vuex.Store({
 	mutations:{
 		tabberShow(state){
 			state.isShow = false;
-			state.isHide = true
+			state.isHide = true;
+
+
 		},
 		tabberHide(state){
 			state.isShow = true;
