@@ -9,11 +9,11 @@
 	</div>
 </template>
 <script></script>
-<style lang="scss">
+<style scoped lang="scss" >
 	ul{
 		height:40px;
-
-		display: flex;
+		display:flex;
+		width: 100%;
 		li{
 			line-height:40px;
 			flex:1;
