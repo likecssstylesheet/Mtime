@@ -23,12 +23,6 @@ import below from './below'
 			isbanner,
 			hotday,
 			below
-		},
-		mounted(){
-		axios.get('/Service/callback.mi/Showtime/LocationMovies.api?locationId=290&t=201812271128272188'
-			).then(res=>{
-				console.log(res)
-			})
 		}
 	}
 
