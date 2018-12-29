@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<img :src="banner" id="banner">
+		<a :href="href"><img :src="banner" id="banner"></a>
 	</div>
 </template>
 
@@ -9,13 +9,15 @@
 	export default {
 		data(){
 			return {
-				banner:''
+				banner:'',
+				href:'',
 			}
 		},
 		mounted(){
 			axios.get('/Service/callback.mi/PageSubArea/MallAreaFirstH5Url.api?t=20181227167982517').then(res=>{
 				console.log(res)
 				this.banner = res.data.areaFirst.image
+				this.href = res.data.areaFirst.url
 			})
 		}
 	}
