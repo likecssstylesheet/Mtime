@@ -2,7 +2,7 @@
 	<div>
 		<h2>今日热点</h2>
 		<ul>
-			<li v-for="data in datalist">
+			<li v-for="data in datalist" :key="data.id" @click="handleDetails(data.id)">
 				<img :src="data.img">
 				<h3>{{data.title}}</h3>
 				<span>{{data.desc}}</span>
@@ -25,6 +25,13 @@
 				console.log(res)
 				this.datalist = res.data.hotPoints
 			})
+		},
+		methods:{
+			handleDetails(id){
+					this.$router.push(`/homedetails/${id}`);
+					this.$store.commit('tabberShow')
+				}
+
 		}
 	}
 </script>

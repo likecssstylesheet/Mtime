@@ -33,7 +33,7 @@
 						<h5><b>{{data.minPrice/100}}</b>元起</h5>
 					</div>
 					<span>{{data.address}}</span>
-					<h6><span v-if=""></span></h6>					
+					<div><i v-for="item in data.feature" v-if="item==1">{{mess[num]}}</i></div>					
 				</router-link>
 			</ul>
 		</div>
@@ -49,7 +49,9 @@
 				isshow: false,
 				noticeNotOwn: '',
 				cinemaList: [],
-				isShow: false
+				isShow: false,
+				mess: ['3D', 'VIP', '4D', '杜比'],
+				num: 0
 			}
 		},
 
@@ -59,6 +61,7 @@
 				method: 'get'
 			}).then(res=>{
 				console.log(res.data)
+				console.log(res.data.data.cinemaList[0].feature)
 				this.cinemaList = res.data.data.cinemaList
 				this.noticeNotOwn = res.data.data.noticeNotOwn
 			}),
@@ -96,8 +99,9 @@
 		bottom: 50px;
 		right: 10px;
 		background: #eee;
-		border: 1px solid #ccc;
-		z-index: 10
+		border: 1px solid #aaa;
+		z-index: 10;
+		color: #ccc;
 	}
 	.focus {
 			color: #f60;			
@@ -109,13 +113,20 @@
 		display: flex;
 		border-bottom: 1px solid #ccc;
 		box-sizing: border-box;
+		li:nth-child(1) {
+			background: url("/static/images/i_city.png") 61px 29px no-repeat;
+			background-size: 10px
+		}
 		li {
 			height: 60px;
 			line-height: 60px;
+			padding-right: 10px;
+			
 		}
 		li.diff {
 			flex: 1;
 			input {
+				background: url("/static/images/fangda.png") 3px 6px no-repeat;
 				height: 35px;
 				border: 1px solid #ccc;
 				outline: none;

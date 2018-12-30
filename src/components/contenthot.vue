@@ -2,12 +2,12 @@
 	<div>
 		<h2 @click="handleToHot()">正在热映({{datalist.length}}部)<span></span></h2>
 		<ul>
-			<li v-for="data in eight" :key="data.id">
+			<li v-for="data in eight" :key="data.id" @click="handleDetails(data.id)">
 				<img :src="data.img">
 				<p>{{data.t}}</p>
 			</li>
 		</ul>
-		<h2 class="line" @click="handleToComing()">即将上映({{coming}}部)<span></span></h2>
+		<h2 class="line">即将上映({{coming}}部)<span></span></h2>
 	</div>
 </template>
 
@@ -46,7 +46,7 @@
 				handleToComing(){
 					this.$router.push(`/home/coming`);
 					this.$store.commit('tabberShow')
-				}
+				},
 			}
 		}
 </script>
