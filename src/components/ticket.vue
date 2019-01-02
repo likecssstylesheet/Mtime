@@ -33,7 +33,9 @@
 						<h5><b>{{data.minPrice/100}}</b>元起</h5>
 					</div>
 					<span>{{data.address}}</span>
-					<div><i v-for="item in data.feature" v-if="item==1">{{mess[num]}}</i></div>					
+					<div v-for="(item,i) in data.feature" v-if="item=1">
+						<span v-if="item==1"> {{info[i]}} </span>
+					</div>				
 				</router-link>
 			</ul>
 		</div>
@@ -184,6 +186,7 @@
 			position: absolute;
 			left: 0;
 			top: 0;
+			background: #fff;
 			li {
 				height: 40px;
 				line-height: 40px;
